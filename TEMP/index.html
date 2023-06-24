@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Left Panel Navigation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #left-panel {
+        background: #f0f0f0;
+        width: 200px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px;
+      }
+
+      #content {
+        margin-left: 200px;
+        padding: 20px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      .active {
+        font-weight: bold;
+      }
+      h2 {
+        padding-left: 600px;
+      }
+      p {
+        padding-left: 550px;
+      }
+    </style>
+    <script>
+      function showContent(contentId) {
+        // Hide all content sections
+        var contentSections =
+          document.getElementsByClassName("content-section");
+        for (var i = 0; i < contentSections.length; i++) {
+          contentSections[i].style.display = "none";
+        }
+
+        // Show the selected content section
+        var selectedContent = document.getElementById(contentId);
+        selectedContent.style.display = "block";
+
+        // Update active class in left panel
+        var leftPanelItems = document.getElementsByClassName("left-panel-item");
+        for (var j = 0; j < leftPanelItems.length; j++) {
+          leftPanelItems[j].classList.remove("active");
+        }
+        document.getElementById(contentId + "-link").classList.add("active");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="left-panel">
+      <ul>
+        <li>
+          <a
+            href="#"
+            class="left-panel-item active"
+            id="home-link"
+            onclick="showContent('home')"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="left-panel-item"
+            id="contact-link"
+            onclick="showContent('contact')"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="left-panel-item"
+            id="information-link"
+            onclick="showContent('information')"
+            >Information</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="left-panel-item"
+            id="guide-link"
+            onclick="showContent('guide')"
+            >Guide</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div id="content">
+      <div class="content-section" id="home" style="display: block">
+        <h2>Home</h2>
+        <p>Welcome to the Home page!</p>
+      </div>
+      <div class="content-section" id="contact" style="display: none">
+        <h2>Contact</h2>
+        <p>Contact information goes here.</p>
+      </div>
+      <div class="content-section" id="information" style="display: none">
+        <h2>Information</h2>
+        <p>Additional information goes here.</p>
+      </div>
+      <div class="content-section" id="guide" style="display: none">
+        <h2>Guide</h2>
+        <p>Guide content goes here.</p>
+      </div>
+    </div>
+  </body>
+</html>
